@@ -1,0 +1,113 @@
+body, html {
+    height: 100%;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+}
+.background { 
+    background-image: linear-gradient(180deg,rgba(216, 70, 3, 0.664),rgba(8, 1, 99, 0.527)),url("https://www.scarymommy.com/wp-content/uploads/2021/07/12/memory-game-feautre.jpg");
+    background-position: center center;
+    background-color: rgb(54, 54, 54);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    opacity:0.7;
+    border:0;
+}
+
+#game-name{
+    margin:0;
+    padding-top: 25vh;
+    font-size: 50px;
+    color:#fff;
+}
+.start, #instruction, #back {
+    background: linear-gradient(250deg,rgb(0, 41, 129),rgb(132, 0, 150));
+    border: none;
+    text-decoration: none;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size:19.2px;
+    outline: 0;
+    margin-top:48px;
+    padding:0 24px 0 24px;
+    position: relative;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.start{
+    padding:0 34px 0 34px;
+}
+
+.start:before, #instruction:before, #back:before {
+    background-color: initial;
+    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 96px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .4;
+    position: absolute;
+    top: 0.05px;
+    transition: all .5s;
+    width: 92%;
+}
+
+.start:hover, #instruction:hover, #back:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+}
+
+#game-link{
+    text-decoration: none;
+    color:#fff;
+}
+
+#how-to-play{
+    padding: 5vh 10vw 3vh 10vw;
+}
+#game-instructions{
+    background-image: linear-gradient(180deg,rgba(212, 145, 0, 0.795),rgba(223, 209, 87, 0.527));
+    padding:1vh 1vw 6vh 1vw;
+    border-radius:30px;
+}
+#instruction-heading{
+    color:rgb(197, 0, 0);
+}
+#steps{
+    text-align: justify;
+    text-justify: inter-word;
+    padding:0 10vw 0 10vw;
+    color:rgb(5, 5, 5);
+}
+li{
+    font-size:23px;
+}
+
+#back{
+    margin-top:10px;
+}
+
+#game-name, #game-instructions,.start, #instruction, #back{
+    animation: fadein 3s;
+    -moz-animation: fadein 3s; 
+    -webkit-animation: fadein 3s; 
+    -o-animation: fadein 3s; 
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
