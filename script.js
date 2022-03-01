@@ -87,20 +87,20 @@ function restart(){
   level=1;
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels(level);
+  createLevels();
 }
 
 function next(){
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels(level);
+  createLevels();
 }
 
 function again(){
   level=level-1;
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels(level);
+  createLevels();
 }
 
 function createDict(random_image,i){
