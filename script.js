@@ -1,6 +1,6 @@
 var images=['super-1','super-2','super-3','super-4','super-5','super-6','super-7','super-8','super-9','super-10','super-11','super-12','super-13','super-14','super-15'];
 var img=[];
-var n,k,pair_count,count,score;
+var n,level=1,k,pair_count,count,score;
 var prev_id='';
 var dict={};
 
@@ -70,14 +70,14 @@ function congrats(){
           </div></div><br>`
     let div1 = document.createElement('div');
     if(level<=3){
-          div1.innerHTML =`<center><div id="buttons">
+          div1.innerHTML =`<div style={text-align: center;}><div id="buttons">
           <button id="play-again" onclick="again();">Try Again</button><button id="next" onclick="next();">Next</button>
-          </div></center>`;
+          </div></div>`;
     }
     else{
-          div1.innerHTML = `<center><div id="buttons">
+          div1.innerHTML = `<div style={text-align: center;}><div id="buttons">
           <div ><button id="play-again" onclick="again();">Try Again</button><button id="next" onclick="restart();">Restart</button></div>
-          </div></center>`;
+          </div></div>`;
     }
     div.appendChild(div1);
     child_content.appendChild(div);
@@ -135,7 +135,7 @@ function pickRandomImage(){
    return random_image;
 }
 
-function createCards(level){
+function createCards(){
     let i;
     const child_content = document.querySelector('#child-content');
     document.getElementById("round").innerHTML="LEVEL-"+level;
@@ -159,10 +159,13 @@ function createCards(level){
 
 }
 
-function createLevels(level)
+function createLevels()
 {
       dict={}; 
-      k=0,pair_count=1,count=0,score=0;
+      k=0;
+      pair_count=1;
+      count=0;
+      score=0;
       prev_id=''; 
       document.getElementById("child-content").style.minWidth="0vw";
       document.getElementById("child").style.minHeight="80vh";
@@ -171,7 +174,7 @@ function createLevels(level)
           document.getElementById("child-content").style.width="25.5vw";
           document.documentElement.style.setProperty("--colNum", 3); 
           n=12;
-          createCards(level);
+          createCards();
       }
       else if(level==2){
           document.documentElement.style.setProperty("--colNum", 4); 
@@ -179,18 +182,18 @@ function createLevels(level)
           document.getElementById("child-content").style.width="25.5vw";
           document.getElementById("child-content").style.paddingRight="9vw";
           n=16;
-          createCards(level);
+          createCards();
       }  
       else if(level==3){
           document.documentElement.style.setProperty("--colNum", 4); 
           document.getElementById("child-content").style.paddingTop="8vh";
           document.getElementById("child-content").style.paddingRight="8vw";
           n=20;
-          createCards(level);
+          createCards();
       }
 }
 
 function game(){
-   let level=1;
-   createLevels(level);
+   level=1;
+   createLevels();
 }
