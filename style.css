@@ -36,6 +36,10 @@ body{
     grid-column-gap:0.8vw;
     grid-template-columns: repeat(var(--colNum), 8vw);
     justify-items: end;
+    animation: fadein 5s;
+    -moz-animation: fadein 5s; 
+    -webkit-animation: fadein 5s; 
+    -o-animation: fadein 5s;
 }
 
 #container {
@@ -120,9 +124,6 @@ body{
     }
 
 }
-@media only screen and (max-width: 768px) {
-
-}
 @media only screen and (max-width: 425px) {
      #congrats-text{
          font-size: 25px;
@@ -139,14 +140,6 @@ body{
     -webkit-animation: fadein 3s; 
     -o-animation: fadein 3s; 
 }
-
-#child-content{
-    animation: fadein 5s;
-    -moz-animation: fadein 5s; 
-    -webkit-animation: fadein 5s; 
-    -o-animation: fadein 5s;   
-}
-
 
 @keyframes fadein {
     from {
