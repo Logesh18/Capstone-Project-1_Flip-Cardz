@@ -191,6 +191,6 @@ function createLevels(level)
 }
 
 function game(){
-   let level=1;
+   level=1;
    createLevels(level);
 }
