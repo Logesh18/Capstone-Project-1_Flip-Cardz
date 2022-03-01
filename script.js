@@ -4,6 +4,14 @@ var n,level=1,k,pair_count,count,score;
 var prev_id='';
 var dict={};
 
+function getRandomInt(min, max) {       
+  var byteArray = new Uint8Array(1);
+  window.crypto.getRandomValues(byteArray);
+  var randomNum = '0.' + byteArray[0].toString();
+  randomNum = Math.floor(randomNum * (max - min + 1)) + min;
+  return randomNum;
+}
+
 function flip(id){
   let classes=document.getElementById(id).classList;
 	  if (classes[0] === "card") {
@@ -114,7 +122,7 @@ function unique(){
   
   let random_image;
   for(let j=0;j<n/2;j++){
-    random_image=images[Math.floor(Math.random()*images.length)];
+    random_image=img[getRandomInt(0,img.length)];
     if(img.indexOf(random_image)==-1){
        img[k]=random_image;
        k++;
@@ -129,7 +137,7 @@ function pickRandomImage(){
      random_image=unique();
    }
    else{
-     random_image=img[Math.floor(Math.random()*img.length)];
+     random_image=img[getRandomInt(0,img.length)];
      img.splice(img.indexOf(random_image),1);
    }
    return random_image;
