@@ -1,6 +1,6 @@
 var images=['super-1','super-2','super-3','super-4','super-5','super-6','super-7','super-8','super-9','super-10','super-11','super-12','super-13','super-14','super-15'];
 var img=[];
-var n,k,pair_count,count,level=1,score;
+var n,k,pair_count,count,score;
 var prev_id='';
 var dict={};
 
@@ -162,7 +162,7 @@ function createCards(level){
 function createLevels(level)
 {
       dict={}; 
-      n,k=0,pair_count=1,count=0,score=0;
+      k=0,pair_count=1,count=0,score=0;
       prev_id=''; 
       document.getElementById("child-content").style.minWidth="0vw";
       document.getElementById("child").style.minHeight="80vh";
@@ -191,6 +191,6 @@ function createLevels(level)
 }
 
 function game(){
-   level=1;
+   let level=1;
    createLevels(level);
 }
