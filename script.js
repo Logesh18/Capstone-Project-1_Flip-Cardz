@@ -1,6 +1,6 @@
 var images=['super-1','super-2','super-3','super-4','super-5','super-6','super-7','super-8','super-9','super-10','super-11','super-12','super-13','super-14','super-15'];
 var img=[];
-var n,level=1,k,pair_count,count,score;
+var n,k,pair_count,count,level=1,score;
 var prev_id='';
 var dict={};
 
@@ -12,8 +12,10 @@ function getRandomInt(min, max) {
   return randomNum;
 }
 
+/******************************************************************************* */
 function flip(id){
   let classes=document.getElementById(id).classList;
+  // console.log(classes);
 	  if (classes[0] === "card") {
       document.getElementById(id).style.transform = "rotateY(180deg)";
       if(pair_count==1){
@@ -21,15 +23,20 @@ function flip(id){
         pair_count++;
       }
       else if(prev_id!=id && dict[classes[1]].indexOf(parseInt(prev_id))!=-1 && dict[classes[1]].indexOf(parseInt(id))!=-1){
+        // console.log("same");
         document.getElementById(prev_id).disabled = true;
         document.getElementById(id).disabled = true;
         document.getElementById(id).removeAttribute("onclick");
         document.getElementById(prev_id).removeAttribute("onclick");
         count++;
+	      score+=5;
+        // console.log(count);
         pair_count--;
       }
       else{
+        // console.log("not same");
           if(prev_id!=id){
+              // setTimeout(()=>{ setTimeout(()=>{ document.getElementById(prev_id).style.transform = "rotateY(0deg)"; }, 100); document.getElementById(id).style.transform = "rotateY(0deg)"; }, 1800);
               setTimeout(()=>{ 
               document.getElementById(prev_id).style.transform = "rotateY(0deg)";
               document.getElementById(id).style.transform = "rotateY(0deg)"; }, 2000);
@@ -46,7 +53,7 @@ function flip(id){
       setTimeout(() => {congrats();}, 1800);
     }
 }
-
+/*************************************************************************************** */
 function congrats(){
     document.getElementById("child-content").style.width="0vw";
     document.getElementById("child-content").style.paddingRight="0vw";
@@ -78,38 +85,40 @@ function congrats(){
           </div></div><br>`
     let div1 = document.createElement('div');
     if(level<=3){
-          div1.innerHTML =`<div style={text-align: center;}><div id="buttons">
+          div1.innerHTML =`<center><div id="buttons">
           <button id="play-again" onclick="again();">Try Again</button><button id="next" onclick="next();">Next</button>
-          </div></div>`;
+          </div></center>`;
     }
     else{
-          div1.innerHTML = `<div style={text-align: center;}><div id="buttons">
+          div1.innerHTML = `<center><div id="buttons">
           <div ><button id="play-again" onclick="again();">Try Again</button><button id="next" onclick="restart();">Restart</button></div>
-          </div></div>`;
+          </div></center>`;
     }
     div.appendChild(div1);
     child_content.appendChild(div);
 }
-
+/*************************************************************************************** */
 function restart(){
   level=1;
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels();
+  createLevels(level);
 }
-
+/*************************************************************************************** */
 function next(){
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels();
+  createLevels(level);
 }
-
+/*************************************************************************************** */
 function again(){
   level=level-1;
   document.getElementById("round").innerHTML="Level-"+level;
   document.getElementById('child-content').innerHTML = '';
-  createLevels();
+  createLevels(level);
 }
+
+/*************************************************************************************** */
 
 function createDict(random_image,i){
   if (!dict[random_image]) {
@@ -117,15 +126,16 @@ function createDict(random_image,i){
   }
   dict[random_image].push(i);
 }
-
+/***************************************************************************** */
 function unique(){
   
   let random_image;
   for(let j=0;j<n/2;j++){
-    random_image=img[getRandomInt(0,img.length)];
+    random_image=images[getRandomInt(0,images.length)];
     if(img.indexOf(random_image)==-1){
        img[k]=random_image;
        k++;
+       console.log(random_image);
        break;
     }
   }
@@ -138,12 +148,13 @@ function pickRandomImage(){
    }
    else{
      random_image=img[getRandomInt(0,img.length)];
+     // console.log(img);
      img.splice(img.indexOf(random_image),1);
    }
    return random_image;
 }
-
-function createCards(){
+/********************************************************************************/
+function createCards(level){
     let i;
     const child_content = document.querySelector('#child-content');
     document.getElementById("round").innerHTML="LEVEL-"+level;
@@ -166,14 +177,11 @@ function createCards(){
     }
 
 }
-
-function createLevels()
+/*************************************************************************************** */
+function createLevels(level)
 {
       dict={}; 
-      k=0;
-      pair_count=1;
-      count=0;
-      score=0;
+      n,k=0,pair_count=1,count=0,score=0;
       prev_id=''; 
       document.getElementById("child-content").style.minWidth="0vw";
       document.getElementById("child").style.minHeight="80vh";
@@ -182,7 +190,8 @@ function createLevels()
           document.getElementById("child-content").style.width="25.5vw";
           document.documentElement.style.setProperty("--colNum", 3); 
           n=12;
-          createCards();
+          createCards(level);
+          // console.log("hello");
       }
       else if(level==2){
           document.documentElement.style.setProperty("--colNum", 4); 
@@ -190,18 +199,20 @@ function createLevels()
           document.getElementById("child-content").style.width="25.5vw";
           document.getElementById("child-content").style.paddingRight="9vw";
           n=16;
-          createCards();
+          createCards(level);
+          // console.log("hello-1");
       }  
       else if(level==3){
           document.documentElement.style.setProperty("--colNum", 4); 
           document.getElementById("child-content").style.paddingTop="8vh";
           document.getElementById("child-content").style.paddingRight="8vw";
           n=20;
-          createCards();
+          createCards(level);
+          // console.log("hello-2");
       }
 }
-
+/*************************************************************************************** */
 function game(){
    level=1;
-   createLevels();
+   createLevels(level);
 }
